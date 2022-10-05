@@ -18,35 +18,6 @@ export class UserModel extends AuthModel {
   // personal information
   firstname?: string;
   lastname?: string;
-  website?: string;
-  // account information
-  language?: string;
-  timeZone?: string;
-  communication?: {
-    email: boolean;
-    sms: boolean;
-    phone: boolean;
-  };
-  // email settings
-  emailSettings?: {
-    emailNotification: boolean;
-    sendCopyToPersonalEmail: boolean;
-    activityRelatesEmail: {
-      youHaveNewNotifications: boolean;
-      youAreSentADirectMessage: boolean;
-      someoneAddsYouAsAsAConnection: boolean;
-      uponNewOrder: boolean;
-      newMembershipApproval: boolean;
-      memberRegistration: boolean;
-    };
-    updatesFromKeenthemes: {
-      newsAboutKeenthemesProductsAndFeatureUpdates: boolean;
-      tipsOnGettingMoreOutOfKeen: boolean;
-      thingsYouMissedSindeYouLastLoggedIntoKeen: boolean;
-      newsAboutMetronicOnPartnerProductsAndOtherServices: boolean;
-      tipsOnMetronicBusinessProducts: boolean;
-    };
-  };
 
   setUser(_user: unknown) {
     const user = _user as UserModel;

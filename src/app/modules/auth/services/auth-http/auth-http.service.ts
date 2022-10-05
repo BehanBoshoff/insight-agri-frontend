@@ -20,7 +20,10 @@ export class AuthHTTPService {
     formData.append("username", email);
     formData.append("password", password);
 
-    return this.http.post<AuthModel>(`${API_USERS_URL}/login/token`, formData).pipe(map(data => { console.log(data) }));
+    return this.http.post<AuthModel>(`${API_USERS_URL}/login/token`, formData).pipe(map(data => { 
+      console.log("http_service_response: ", data);
+      return data;
+    }));
   }
 
   // CREATE =>  POST: add a new user to the server

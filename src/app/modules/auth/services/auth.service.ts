@@ -48,6 +48,7 @@ export class AuthService implements OnDestroy {
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
       map((auth: AuthModel) => {
+        console.log("auth_service_response: ", auth);
         const result = this.setAuthFromLocalStorage(auth);
         return result;
       }),
@@ -75,7 +76,9 @@ export class AuthService implements OnDestroy {
 
     this.isLoadingSubject.next(true);
     return this.authHttpService.getUserByToken(auth.authToken).pipe(
-      map((user: UserType) => {
+      // map((user: UserType) => {
+      map((user: any) => {
+        console.log(user);
         if (user) {
           this.currentUserSubject.next(user);
         } else {
