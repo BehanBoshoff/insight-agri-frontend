@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { UserModel } from '../../models/user.model';
+// import { UserModel } from '../../models/user.model';
+import { AuthModel } from '../../models/auth.model';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,8 +15,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit, OnDestroy {
   // KeenThemes mock, change it to:
   defaultAuth: any = {
-    email: 'admin@demo.com',
-    password: 'demo',
+    // email: 'admin@demo.com',
+    // password: 'demo',
+    email: 'behan2@example.com',
+    password: 'behannotadmin',
   };
   loginForm: FormGroup;
   hasError: boolean;
@@ -77,8 +80,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     const loginSubscr = this.authService
       .login(this.f.email.value, this.f.password.value)
       .pipe(first())
-      .subscribe((user: UserModel | undefined) => {
-        if (user) {
+      .subscribe((authUser: AuthModel | undefined) => {
+        console.log(authUser);
+        if (authUser) {
           this.router.navigate([this.returnUrl]);
         } else {
           this.hasError = true;

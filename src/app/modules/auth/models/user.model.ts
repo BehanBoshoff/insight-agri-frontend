@@ -4,25 +4,25 @@ import { SocialNetworksModel } from './social-networks.model';
 
 export class UserModel extends AuthModel {
   id: number;
-  username: string;
+  username?: string;
   password: string;
-  fullname: string;
+  fullname?: string;
   email: string;
-  pic: string;
-  roles: number[] = [];
-  occupation: string;
-  companyName: string;
-  phone: string;
+  pic?: string;
+  roles?: number[] = [];
+  occupation?: string;
+  companyName?: string;
+  phone?: string;
   address?: AddressModel;
   socialNetworks?: SocialNetworksModel;
   // personal information
-  firstname: string;
-  lastname: string;
-  website: string;
+  firstname?: string;
+  lastname?: string;
+  website?: string;
   // account information
-  language: string;
-  timeZone: string;
-  communication: {
+  language?: string;
+  timeZone?: string;
+  communication?: {
     email: boolean;
     sms: boolean;
     phone: boolean;

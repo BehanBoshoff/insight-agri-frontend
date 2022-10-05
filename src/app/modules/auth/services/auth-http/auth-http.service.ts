@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
@@ -13,12 +13,14 @@ const API_USERS_URL = `${environment.apiUrl}/auth`;
 export class AuthHTTPService {
   constructor(private http: HttpClient) {}
 
+  
   // public methods
   login(email: string, password: string): Observable<any> {
-    return this.http.post<AuthModel>(`${API_USERS_URL}/login`, {
-      email,
-      password,
-    });
+    const formData: FormData = new FormData();
+    formData.append("username", email);
+    formData.append("password", password);
+
+    return this.http.post<AuthModel>(`${API_USERS_URL}/login/token`, formData).pipe(map(data => { console.log(data) }));
   }
 
   // CREATE =>  POST: add a new user to the server
@@ -37,7 +39,7 @@ export class AuthHTTPService {
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get<UserModel>(`${API_USERS_URL}/me`, {
+    return this.http.get<UserModel>(`${API_USERS_URL}/login/me`, {
       headers: httpHeaders,
     });
   }

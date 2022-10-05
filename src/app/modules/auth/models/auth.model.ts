@@ -1,7 +1,7 @@
 export class AuthModel {
   authToken: string;
   refreshToken: string;
-  expiresIn: Date;
+  expiresIn?: Date;
 
   setAuth(auth: AuthModel) {
     this.authToken = auth.authToken;
