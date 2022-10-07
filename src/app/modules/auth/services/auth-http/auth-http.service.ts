@@ -5,7 +5,8 @@ import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
 
-const API_USERS_URL = `${environment.apiUrl}/auth`;
+const API_AUTH_URL = `${environment.apiUrl}/auth`;
+const API_USERS_URL = `${environment.apiUrl}/users`;
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class AuthHTTPService {
     formData.append("username", email);
     formData.append("password", password);
 
-    return this.http.post<AuthModel>(`${API_USERS_URL}/login/token`, formData).pipe(map(data => { 
+    return this.http.post<AuthModel>(`${API_AUTH_URL}/login/token`, formData).pipe(map(data => { 
       console.log("http_service_response: ", data);
       return data;
     }));
@@ -33,7 +34,7 @@ export class AuthHTTPService {
 
   // Your server should check email => If email exists send link to the user and return true | If email doesn't exist return false
   forgotPassword(email: string): Observable<boolean> {
-    return this.http.post<boolean>(`${API_USERS_URL}/forgot-password`, {
+    return this.http.post<boolean>(`${API_AUTH_URL}/forgot-password`, {
       email,
     });
   }
@@ -42,7 +43,7 @@ export class AuthHTTPService {
     const httpHeaders = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get<UserModel>(`${API_USERS_URL}/login/me`, {
+    return this.http.get<UserModel>(`${API_AUTH_URL}/login/me`, {
       headers: httpHeaders,
     });
   }

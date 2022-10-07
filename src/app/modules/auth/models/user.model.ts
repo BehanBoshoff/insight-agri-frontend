@@ -15,7 +15,6 @@ export class UserModel extends AuthModel {
   phone?: string;
   address?: AddressModel;
   socialNetworks?: SocialNetworksModel;
-  // personal information
   firstname?: string;
   lastname?: string;
 
@@ -25,6 +24,8 @@ export class UserModel extends AuthModel {
     this.username = user.username || '';
     this.password = user.password || '';
     this.fullname = user.fullname || '';
+    this.firstname = user.firstname || '';
+    this.lastname = user.lastname || '';
     this.email = user.email || '';
     this.pic = user.pic || './assets/media/avatars/blank.png';
     this.roles = user.roles || [];

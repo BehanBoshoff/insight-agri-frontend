@@ -4,8 +4,9 @@ import { Subscription, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ConfirmPasswordValidator } from './confirm-password.validator';
-import { UserModel } from '../../models/user.model';
+import { CreateUserModel } from '../../models/create-user.model';
 import { first } from 'rxjs/operators';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -93,7 +94,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     Object.keys(this.f).forEach((key) => {
       result[key] = this.f[key].value;
     });
-    const newUser = new UserModel();
+    const newUser = new CreateUserModel();
     newUser.setUser(result);
     const registrationSubscr = this.authService
       .registration(newUser)
