@@ -44,8 +44,18 @@ const Routing: Routes = [
     data: { layout: 'light-sidebar' },
   },
   {
+    path: 'map',
+    loadChildren: () =>
+      import('./map/map.module').then((m) => m.MapModule),
+  },
+  // {
+  //   path: '',
+  //   redirectTo: '/dashboard',
+  //   pathMatch: 'full',
+  // },
+  {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/map',
     pathMatch: 'full',
   },
   {
