@@ -13,6 +13,7 @@ import { AuthService } from './modules/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
+import { MapComponent } from './pages/map/map.component';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -25,7 +26,7 @@ function appInitializer(authService: AuthService) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MapComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

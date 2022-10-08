@@ -7,6 +7,12 @@ export const environment = {
   appVersion: 'v8.1.3',
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
+
+  // mapbox
+  mapbox: {
+    accessToken: 'pk.eyJ1IjoiYmVoYW5ib3Nob2ZmIiwiYSI6ImNsOHp1bnBwazB1OHkzdnF2bHRtZHdvM2wifQ.ZazqJAVxJn_AMAw0Z0EwHQ',
+  },
+
   // apiUrl: 'api',
   apiUrl: 'http://127.0.0.1:8000',
   appThemeName: 'Metronic',
